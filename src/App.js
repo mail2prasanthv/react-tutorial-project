@@ -10,12 +10,16 @@ class  App extends Component {
     super();
     this.state ={
       names: [
-        {value: 'Prasanth'},
-        {value: 'Kevin'},
-        {value: 'Manu'}
+        { id: 1,
+          value: 'Prasanth'
+        },
+        { id: 2,
+          value: 'Kevin'
+        },
+        { id: 3,
+          value: 'Manu'
+        }
       ]
-
-    
     }
   }
 
@@ -25,10 +29,11 @@ class  App extends Component {
         <header className="App-header">
           {
             this.state.names.map(name=>{
-              return <h1>{name.value}</h1>
+              return <div id={name.id}>
+                <h1>{name.value}</h1>
+                </div>
             })
           }
-        
         </header>
       </div>
     );
