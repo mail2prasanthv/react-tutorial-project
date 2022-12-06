@@ -22,20 +22,24 @@ class  App extends Component {
     },));
   }
 
+  onSearchChange = (event)=> {
+      this.setState({searchKeyword: event.target.value})
+    };
+  
+
    render() {
+
+    const filteredUsers = this.state.myusers.filter(eachname=> 
+      String(eachname.name).includes(this.state.searchKeyword));
+
     return (
       <div className="App">
-        <input className='searchUsers' type='search' placeholder='Search Me' 
-        onChange={
-            (event)=> {
-                        this.setState({searchKeyword: event.target.value})
-                      }
-                  }
-        ></input>
+        <input className='searchUsers' type='search' placeholder='Search Me' onChange={this.onSearchChange}>
+        </input>
           {
-            this.state.myusers && 
-            this.state.myusers.filter(eachname=> String(eachname.name).includes(this.state.searchKeyword))
-                               .map(eachname=>{
+            
+            
+            filteredUsers.map(eachname=>{
               return <div id={eachname.id} key={eachname.id} >
                           <h1>{eachname.name}</h1>
                       </div>
