@@ -1,8 +1,9 @@
 
 import { Component } from 'react';
 
-
+import SearchResult from './components/search-result/search-result.component';
 import './App.css';
+import SearchBox from './components/search-box/search-box.component';
 
 class  App extends Component {
 
@@ -32,19 +33,13 @@ class  App extends Component {
     const filteredUsers = this.state.myusers.filter(eachname=> 
       String(eachname.name).includes(this.state.searchKeyword));
 
+      console.log(filteredUsers);
+
     return (
       <div className="App">
-        <input className='searchUsers' type='search' placeholder='Search Me' onChange={this.onSearchChange}>
-        </input>
-          {
-            
-            
-            filteredUsers.map(eachname=>{
-              return <div id={eachname.id} key={eachname.id} >
-                          <h1>{eachname.name}</h1>
-                      </div>
-            })
-          }
+        <SearchBox onSearchChangeHandlerMethodName={this.onSearchChange} placeholderText="Search Me" className='searchUsers' />
+        <SearchResult myFilteredUsers={filteredUsers} />  
+         
       </div>
     );
   }
