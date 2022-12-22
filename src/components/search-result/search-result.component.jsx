@@ -1,4 +1,6 @@
 import { Component } from "react";
+import "./card.styles.css";
+import "./card-list.styles.css"
 
 class SearchResult extends Component {
 
@@ -7,11 +9,15 @@ class SearchResult extends Component {
         const {myFilteredUsers} = this.props;
 
         return (
-            <div>
-                 {myFilteredUsers?.map(eachUser=>(
-                          <h1 id={eachUser.id} key={eachUser.id}>{eachUser.name}</h1>
-            ))}
-
+            <div className="card-list">
+                 {myFilteredUsers?.map((eachUser)=>(
+                        <div className="card-container">
+                            <h2 id={eachUser.id} key={eachUser.id}>
+                                {eachUser.name}
+                            </h2>
+                            <p>{eachUser.email}</p>
+                        </div>
+    ))}
             </div>
         );
     }

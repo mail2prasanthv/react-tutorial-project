@@ -2,8 +2,8 @@
 import { Component } from 'react';
 
 import SearchResult from './components/search-result/search-result.component';
-import './App.css';
 import SearchBox from './components/search-box/search-box.component';
+import './App.css';
 
 class  App extends Component {
 
